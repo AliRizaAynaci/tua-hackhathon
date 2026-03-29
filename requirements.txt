@@ -1,0 +1,7 @@
+numpy
+matplotlib
+rasterio
+scipy
+pygame
+fastapi
+uvicorn

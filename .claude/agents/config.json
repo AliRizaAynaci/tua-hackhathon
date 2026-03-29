@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "project": "personal-trainer-v2",
+  "agents": {
+    "product-manager": {
+      "role": "Vision Keeper",
+      "file": ".claude/agents/product_manager.md",
+      "responsibilities": ["requirement-analysis", "acceptance-criteria", "prioritization"],
+      "triggers": ["new-task", "unclear-requirements"],
+      "output": "analyzed-task"
+    },
+    "team-lead": {
+      "role": "Strategist",
+      "file": ".claude/agents/team_lead.md",
+      "responsibilities": ["architecture-review", "implementation-plan", "risk-assessment"],
+      "triggers": ["analysis-complete", "ready-for-review"],
+      "output": "technical-plan"
+    },
+    "backend-developer": {
+      "role": "API & Data Specialist",
+      "file": ".claude/agents/developer.md",
+      "responsibilities": ["api-endpoints", "database-models", "business-logic"],
+      "triggers": ["backend-assigned"],
+      "output": "backend-implementation"
+    },
+    "frontend-developer": {
+      "role": "UI/UX Specialist",
+      "file": ".claude/agents/developer.md",
+      "responsibilities": ["react-components", "state-management", "styyling"],
+      "triggers": ["frontend-assigned"],
+      "output": "frontend-implementation"
+    },
+    "devops-developer": {
+      "role": "Integration & Performance Specialist",
+      "file": ".claude/agents/developer.md",
+      "responsibilities": ["ci-cd", "deployment", "performance-optimization"],
+      "triggers": ["devops-assigned"],
+      "output": "devops-implementation"
+    },
+    "qa-engineer": {
+      "role": "Reviewer",
+      "file": ".claude/agents/qa_engineer.md",
+      "responsibilities": ["code-review", "security-review", "edge-case-analysis"],
+      "triggers": ["implementation-complete"],
+      "output": "qa-report"
+    }
+  },
+  "workflow": {
+    "states": [
+      "BACKLOG",
+      "ANALYSIS",
+      "PLANNING",
+      "IMPLEMENTATION",
+      "REVIEW",
+      "QA",
+      "CHANGES_REQUESTED",
+      "APPROVED",
+      "DONE"
+    ],
+    "transitions": {
+      "BACKLOG": ["ANALYSIS"],
+      "ANALYSIS": ["PLANNING"],
+      "PLANNING": ["IMPLEMENTATION"],
+      "IMPLEMENTATION": ["REVIEW"],
+      "REVIEW": ["QA", "CHANGES_REQUESTED"],
+      "QA": ["APPROVED", "CHANGES_REQUESTED"],
+      "CHANGES_REQUESTED": ["IMPLEMENTATION"],
+      "APPROVED": ["DONE"],
+      "DONE": []
+    },
+    "agentMapping": {
+      "BACKLOG": null,
+      "ANALYSIS": "product-manager",
+      "PLANNING": "team-lead",
+      "IMPLEMENTATION": "developer",
+      "REVIEW": "team-lead",
+      "QA": "qa-engineer",
+      "CHANGES_REQUESTED": "developer",
+      "APPROVED": null,
+      "DONE": null
+    }
+  },
+  "parallelExecution": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "parallelizableStates": ["IMPLEMENTATION"],
+    "canRunParallel": {
+      "backend-developer": true,
+      "frontend-developer": true,
+      "devops-developer": false
+    }
+  }
+}

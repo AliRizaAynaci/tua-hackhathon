@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter analyze:*)",
+      "Bash(go run:*)",
+      "Bash(find /Users/ali/Desktop/personal-trainer-v2 -type f -name *.go -o -name *.dart -o -name *.js -o -name *.ts -o -name *.json -o -name *.yaml -o -name *.yml -o -name *.md)",
+      "Bash(find /Users/ali/Desktop/personal-trainer-v2 -name .DS_Store -o -name *.db)"
+    ]
+  }
+}

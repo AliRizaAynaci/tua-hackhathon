@@ -1,0 +1,48 @@
+{
+  "taskId": "TASK-001",
+  "title": "Example: User Authentication System",
+  "description": "Implement user authentication with JWT tokens",
+  "createdAt": "2024-03-24T10:00:00Z",
+  "priority": "high",
+  "currentState": "BACKLOG",
+  "currentAgent": null,
+  "startedAt": null,
+  "lastUpdated": "2024-03-24T10:00:00Z",
+  "history": [
+    {
+      "state": "BACKLOG",
+      "timestamp": "2024-03-24T10:00:00Z",
+      "agent": "user",
+      "notes": "Task created by user"
+    }
+  ],
+  "assignments": {
+    "analysis": null,
+    "planning": null,
+    "backend": null,
+    "frontend": null,
+    "devops": null,
+    "qa": null
+  },
+  "artifacts": {
+    "analysis": null,
+    "plan": null,
+    "backendImpl": null,
+    "frontendImpl": null,
+    "devopsImpl": null,
+    "review": null,
+    "qaReport": null
+  },
+  "dependencies": {
+    "blocks": [],
+    "blockedBy": []
+  },
+  "completionCriteria": {
+    "analysis": false,
+    "planning": false,
+    "implementation": false,
+    "review": false,
+    "qa": false,
+    "approved": false
+  }
+}
